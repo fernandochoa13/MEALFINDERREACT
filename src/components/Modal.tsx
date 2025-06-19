@@ -6,11 +6,13 @@ type Props = {
     onClose: () => void;
 }
 
+
+
 function Modal({children, onClose}: Props) {
   return (
    <>
    <div onClick={onClose} className="Modal-Background">
-<div  className="Modal-Content">
+<div className="Modal-Content">
   {children}
 </div>
 <Button onClick={onClose}>Cerrar</Button>

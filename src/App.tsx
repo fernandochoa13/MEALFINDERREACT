@@ -6,6 +6,7 @@ import DashBoard from './components/DashBoard';
 import  'bootstrap/dist/css/bootstrap.min.css';
 import Modal from './components/Modal';
 import Button from './components/Button';
+import getIngredientesYMedidas from './utils/getIngredientesYMedidas'
 
 type Meal = {
   strCategory: string;
@@ -15,6 +16,8 @@ type MealItem = {
   strMeal: string;
   strMealThumb: string;
   idMeal: string;
+  strInstructions: string;
+
 };
 
 function App() {
@@ -82,13 +85,23 @@ function App() {
      {/* Modal */}
       {selectedRecipe && (
         <Modal onClose={closeDetailsRecipe}>
-          <h2>{selectedRecipe.strMeal}</h2>
+          <h1>{selectedRecipe.strMeal}</h1>
           <img
             src={selectedRecipe.strMealThumb}
             alt={selectedRecipe.strMeal}
           />
           {/* Aquí puedes agregar más detalles */}
-          <p>ID: {selectedRecipe.idMeal}</p>
+          <h4>Ingredientes:</h4>
+          <ul>
+            {getIngredientesYMedidas(selectedRecipe).map((item, index) => (
+<li key={index}>
+  {item.ingrediente} - {item.medida}
+
+</li>
+            ))}
+          </ul>
+          <h4>Instrucciones:</h4>
+          <p style={{ whiteSpace: 'pre-line' }}>{selectedRecipe.strInstructions}</p>
         </Modal>
       )}
     </DashBoard>
