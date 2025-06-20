@@ -1,8 +1,6 @@
 import React, { ReactNode, useState } from 'react';
-import CategoryList from './categoryList';
-import CategoryItem from './categoryItem';
-
-
+import CategoryList from './CategoryList';
+import CategoryItem from './CategoryItem';
 
 type Meal = {
   strCategory: string;
