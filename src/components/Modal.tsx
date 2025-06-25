@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react'
 import Button from './Button';
+import  '../style-modules/modal-module.css'
 
 type Props = {
     children: ReactNode;

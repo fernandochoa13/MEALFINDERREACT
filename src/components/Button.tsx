@@ -9,7 +9,7 @@ type Props = {
 function Button({children, onClick}: Props) {
 
   return (
-    <button onClick={onClick} >{children}</button>
+    <button className="btn btn-info" onClick={onClick} >{children}</button>
   )
 }
 

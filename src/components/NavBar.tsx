@@ -20,6 +20,7 @@ function NavBar({ data, onClick }: Props) {
   };
 
   return (
+    <div className="col">
     <CategoryList>
       {data.map((elemento, i) => (
         <CategoryItem
@@ -30,6 +31,7 @@ function NavBar({ data, onClick }: Props) {
         />
       ))}
     </CategoryList>
+    </div>
   );
 }
 

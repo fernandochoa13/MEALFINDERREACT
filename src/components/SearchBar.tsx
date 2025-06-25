@@ -1,16 +1,30 @@
-import React, { ReactNode } from 'react'
+import { useState } from 'react';
 
 type Props = {
-  children: ReactNode
-}
+  onSearch: (query: string) => void;
+};
 
-function SearchBar({children}: Props) {
+function SearchBar({ onSearch }: Props) {
+  const [input, setInput] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSearch(input.trim());
+  };
+
   return (
-    <div className="input-group mb-3">
-  <input type="text" className="form-control" placeholder="Recipients username" aria-label="Recipients username" aria-describedby="button-addon2"></input>
-  <button className="btn btn-outline-secondary" type="button" id="button-addon2">{children}</button>
-</div>
-  )
+    <form onSubmit={handleSubmit} className="">
+      <input
+        type="text"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+        placeholder="Buscar receta..."
+        className=""
+      />
+      <button type="submit" className="">
+        Buscar
+      </button>
+    </form>
+  );
 }
-
-export default SearchBar
+ export default SearchBar;

@@ -8,6 +8,7 @@ import Modal from './components/Modal';
 import Button from './components/Button';
 import getIngredientesYMedidas from './utils/getIngredientesYMedidas'
 import SearchBar from './components/SearchBar';
+import { Group, JsxElement } from '@chakra-ui/react';
 
 type Meal = {
   strCategory: string;
@@ -102,6 +103,20 @@ function App() {
       json => (Array.isArray(json.meals) ? json.meals : [])
     );
 
+    //Busqueda de barra
+    const [searchQuery, setSearchQuery] = useState('');
+
+const {
+  data: mealsBySearch,
+  loading: loadingBySearch,
+  error: errorBySearch,
+} = useFetchData<MealItem>(
+  searchQuery
+    ? `https://www.themealdb.com/api/json/v1/1/search.php?s=${encodeURIComponent(searchQuery)}`
+    : '',
+  json => (Array.isArray(json.meals) ? json.meals : [])
+);
+
   
 
   if (loadingCategories) return <p>Cargando categorías...</p>;
@@ -134,7 +149,7 @@ function App() {
 
   return (
     <div>
-    <SearchBar>Buscar</SearchBar>
+    <SearchBar onSearch={setSearchQuery}></SearchBar>
     <DashBoard>
       
     <div className="d-flex">
@@ -144,15 +159,44 @@ function App() {
         onClick={(categoria) => setSelectedCategory(categoria)}
       />
     </div>
-       {!loadingMeals && mealsByCategory.length > 0 && (
-    mealsByCategory.map((meal) => (
-      <div className="col-md-4 mb-3" key={meal.idMeal}>
+    {searchQuery && !loadingBySearch ? (
+  mealsBySearch.length > 0 ? (
+    mealsBySearch.map((meal) => (
+      <div className="col" key={meal.idMeal}>
         <Card photo={meal.strMealThumb}>
           <CardBody title={meal.strMeal} />
           <Button onClick={() => showDetailsRecipe(meal)}>Ver detalles</Button>
         </Card>
       </div>
-     )) )}
+    ))
+  ) : (
+    <p className="p-3">No se encontraron recetas para “{searchQuery}”.</p>
+  )
+) : (
+  !loadingMeals && mealsByCategory.length > 0 && (
+    mealsByCategory.reduce((chunks: typeof mealsByCategory[][], _, index) => {
+      if (index % 3 === 0) {
+        chunks.push(mealsByCategory.slice(index, index + 3))
+      }
+      return chunks
+      else {
+        rows.push( 
+        <div className="col-md-4" key={index}>
+          {mealsByCategory.map((m) => (
+            <div className="col-md-4" key={m.idMeal}>
+              <Card photo={m.strMealThumb}>
+                <CardBody title={m.strMeal} />
+                <Button onClick={() => showDetailsRecipe(meal)}>Detalles</Button>
+                </Card>
+                </div>
+          ))}
+          </div>
+          );
+      }
+      return rows;
+    }, []) ))}
+    
+
      {/* Modal */}
       {selectedRecipe && (
         <Modal onClose={closeDetailsRecipe}>

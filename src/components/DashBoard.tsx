@@ -7,7 +7,7 @@ type Props = {
 
 function DashBoard({children}: Props) {
   return (
-    <div className="Plataforma">
+    <div className="Plataforma container-fluid" >
       {children}
     </div>
   )
