@@ -1,4 +1,7 @@
 .CategoryItem {
-    color:lightskyblue
-
+    color:lightskyblue;
+     margin-bottom: 1rem;
+    cursor: pointer;
+    font-weight: 500;
 }
+

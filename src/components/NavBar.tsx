@@ -1,6 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import CategoryList from './CategoryList';
 import CategoryItem from './CategoryItem';
+import '../style-modules/slidebar-module.css';
 
 type Meal = {
   strCategory: string;
@@ -20,7 +21,7 @@ function NavBar({ data, onClick }: Props) {
   };
 
   return (
-    <div className="col">
+    <div className="col sidebar">
     <CategoryList>
       {data.map((elemento, i) => (
         <CategoryItem

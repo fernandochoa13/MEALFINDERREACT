@@ -148,17 +148,16 @@ const {
   }
 
   return (
+    
     <div>
     <SearchBar onSearch={setSearchQuery}></SearchBar>
     <DashBoard>
-      
-    <div className="d-flex">
+    
       
       <NavBar
         data={meals}
         onClick={(categoria) => setSelectedCategory(categoria)}
       />
-    </div>
     {searchQuery && !loadingBySearch ? (
   mealsBySearch.length > 0 ? (
     mealsBySearch.map((meal) => (
@@ -173,29 +172,33 @@ const {
     <p className="p-3">No se encontraron recetas para “{searchQuery}”.</p>
   )
 ) : (
-  !loadingMeals && mealsByCategory.length > 0 && (
-    mealsByCategory.reduce((chunks: typeof mealsByCategory[][], _, index) => {
+  
+  <div className="container mt-4">
+  {!loadingMeals && mealsByCategory.length > 0 && (
+    mealsByCategory.reduce((rows: JSX.Element[], _, index) => {
       if (index % 3 === 0) {
-        chunks.push(mealsByCategory.slice(index, index + 3))
-      }
-      return chunks
-      else {
-        rows.push( 
-        <div className="col-md-4" key={index}>
-          {mealsByCategory.map((m) => (
-            <div className="col-md-4" key={m.idMeal}>
-              <Card photo={m.strMealThumb}>
-                <CardBody title={m.strMeal} />
-                <Button onClick={() => showDetailsRecipe(meal)}>Detalles</Button>
-                </Card>
+        const group = mealsByCategory.slice(index, index + 3);
+        rows.push(
+          <div className="row mb-4" key={index}>
+            {group.map((meal) => (
+              <div className="col-md-4" key={meal.idMeal}>
+                <div className="custom-card p-3 shadow rounded h-100">
+                  <Card photo={meal.strMealThumb}>
+                    <CardBody title={meal.strMeal} />
+                    <Button onClick={() => showDetailsRecipe(meal)}>Detalles</Button>
+                  </Card>
                 </div>
-          ))}
+              </div>
+            ))}
           </div>
-          );
+        );
       }
       return rows;
-    }, []) ))}
-    
+    }, [])
+  )}
+</div>
+)
+}
 
      {/* Modal */}
       {selectedRecipe && (

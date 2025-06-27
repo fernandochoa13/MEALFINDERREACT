@@ -1,27 +1,23 @@
 .Modal-Background {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 1rem;
-    border-radius: 8px;
-    max-width: 90vw;
-    max-height: 90vh;
-    overflow: auto;
-    z-index: 1001;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* fondo oscuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 .Modal-Content {
-     position: fixed;
-          top: 10%;
-          left: 10%;
-          transform: translate(-50%, -50%);
-          background-color: white;
-          padding: 1rem;
-          border-radius: 8px;
-          max-width: 200vw;
-          max-height: 90vh;
-          overflow: auto;
-          z-index: 1001;
+  background-color: white;
+  width: 120vw;
+  max-width: 800px;
+  max-height: 100vh;
+  padding: 2rem;
+  border-radius: 8px;
+  overflow-y: auto;
+  z-index: 1001;
 }

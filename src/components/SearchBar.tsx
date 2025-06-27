@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import '../style-modules/search-module.css'
+
 
 type Props = {
   onSearch: (query: string) => void;
@@ -14,16 +16,18 @@ function SearchBar({ onSearch }: Props) {
 
   return (
     <form onSubmit={handleSubmit} className="">
-      <input
+      <div className="containerSearchbar">
+      <input 
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
         placeholder="Buscar receta..."
-        className=""
+        className="form-control"
       />
       <button type="submit" className="">
         Buscar
       </button>
+      </div>
     </form>
   );
 }

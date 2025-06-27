@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import Button from './Button';
-
+import '../style-modules/card-module.css'
 
 type Props = {
     children: ReactNode;

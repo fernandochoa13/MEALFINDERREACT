@@ -1,0 +1,13 @@
+.custom-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.custom-card {
+  background-color: #ffffff;
+  transition: transform 0.2s ease-in-out;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+}
