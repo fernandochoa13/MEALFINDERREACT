@@ -1,15 +1,15 @@
 import React, { ReactNode } from 'react'
+import styles from "../style-modules/button.module.css"
 
 type Props = {
     children: ReactNode;
-    onClick: () => void;
-
+    onClick?: () => void;
 }
 
 function Button({children, onClick}: Props) {
 
   return (
-    <button className="btn btn-info" onClick={onClick} >{children}</button>
+    <button onClick={onClick}  className={`${styles.buttonReact}`} >{children}</button>
   )
 }
 

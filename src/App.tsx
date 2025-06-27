@@ -162,14 +162,24 @@ const {
       <div className="divMeals">
     {searchQuery && !loadingBySearch ? (
   mealsBySearch.length > 0 ? (
-    mealsBySearch.map((meal) => (
-      <div className="col" key={meal.idMeal}>
-        <Card photo={meal.strMealThumb}>
-          <CardBody title={meal.strMeal} />
-          <Button onClick={() => showDetailsRecipe(meal)}>Ver detalles</Button>
-        </Card>
-      </div>
-    ))
+    mealsBySearch.reduce((rows: JSX.Element[], _, index) => {
+      if (index % 3 === 0) {
+        const group = mealsBySearch.slice(index, index + 3);
+        rows.push(
+          <div className="row mb-4" key={index}>
+            {group.map((meal) => (
+              <div className="col-md-4" key={meal.idMeal}>
+                <Card photo={meal.strMealThumb}>
+                  <CardBody title={meal.strMeal} />
+                  <Button onClick={() => showDetailsRecipe(meal)}>Ver detalles</Button>
+                </Card>
+              </div>
+            ))}
+          </div>
+        );
+      }
+      return rows;
+    }, [])
   ) : (
     <p className="p-3">No se encontraron recetas para “{searchQuery}”.</p>
   )

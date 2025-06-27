@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../style-modules/search-module.css'
+import styles from '../style-modules/button.module.css'
 
 
 type Props = {
@@ -24,7 +25,7 @@ function SearchBar({ onSearch }: Props) {
         placeholder="Buscar receta..."
         className="form-control"
       />
-      <button type="submit" className="">
+      <button type="submit" className={`${styles.buttonReact}`}>
         Buscar
       </button>
       </div>

@@ -1,6 +1,6 @@
 .sidebar {
     position: fixed;    
- margin-top: 30px;
+    padding-top: 0px;
    left: 0;
    width: 200px;
    bottom: 0;
@@ -15,7 +15,9 @@
 
 .sidebar li {
     color:cornflowerblue;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;
+    font-weight: 700;
 }
 
 .sidebar li:hover {
