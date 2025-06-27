@@ -5,6 +5,7 @@ import Card, { CardBody } from './components/Card';
 import DashBoard from './components/DashBoard';
 import  'bootstrap/dist/css/bootstrap.min.css';
 import Modal from './components/Modal';
+import './style-modules/div-adjustment.css'
 import Button from './components/Button';
 import getIngredientesYMedidas from './utils/getIngredientesYMedidas'
 import SearchBar from './components/SearchBar';
@@ -158,6 +159,7 @@ const {
         data={meals}
         onClick={(categoria) => setSelectedCategory(categoria)}
       />
+      <div className="divMeals">
     {searchQuery && !loadingBySearch ? (
   mealsBySearch.length > 0 ? (
     mealsBySearch.map((meal) => (
@@ -195,10 +197,13 @@ const {
       }
       return rows;
     }, [])
-  )}
+  )
+  }
+  
 </div>
-)
+) 
 }
+</div>
 
      {/* Modal */}
       {selectedRecipe && (

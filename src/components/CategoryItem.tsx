@@ -1,5 +1,4 @@
-import React from 'react';
-import '../style-modules/categoryItem-module.css'
+import styles from '../style-modules/categoryItem.module.css'
 
 type Props = {
   category: string;
@@ -11,7 +10,7 @@ function categoryItem({category, isSelected, onClick}: Props) {
 
   return (
     <li
-      className={`CategoryItem btn ${isSelected ? 'active' : ''}`}
+      className={`${styles.CategoryItem} btn ${isSelected ? 'active' : ''}`}
       onClick={() => onClick(category)}
     >
       {category}

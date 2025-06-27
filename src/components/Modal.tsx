@@ -15,8 +15,9 @@ function Modal({children, onClose}: Props) {
    <div onClick={onClose} className="Modal-Background">
 <div className="Modal-Content">
   {children}
+  <Button onClick={onClose}>Cerrar</Button>
 </div>
-<Button onClick={onClose}>Cerrar</Button>
+
    </div>
    
    </>

@@ -21,7 +21,7 @@ function NavBar({ data, onClick }: Props) {
   };
 
   return (
-    <div className="col sidebar">
+    <div className="sidebar">
     <CategoryList>
       {data.map((elemento, i) => (
         <CategoryItem

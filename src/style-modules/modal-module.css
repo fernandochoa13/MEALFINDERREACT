@@ -1,6 +1,7 @@
 .Modal-Background {
   position: fixed;
-  top: 0;
+  margin-top: 20px;
+  top: 20px;
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -9,13 +10,14 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  border-radius: 4px;
 }
 
 .Modal-Content {
   background-color: white;
-  width: 120vw;
+  width: 60vw;
   max-width: 800px;
-  max-height: 100vh;
+  max-height: 80vh;
   padding: 2rem;
   border-radius: 8px;
   overflow-y: auto;
