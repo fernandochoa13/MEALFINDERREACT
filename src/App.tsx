@@ -10,6 +10,7 @@ import Button from './components/Button';
 import getIngredientesYMedidas from './utils/getIngredientesYMedidas'
 import SearchBar from './components/SearchBar';
 import { Group, JsxElement } from '@chakra-ui/react';
+import Title from './components/Title'
 
 type Meal = {
   strCategory: string;
@@ -218,7 +219,7 @@ const {
      {/* Modal */}
       {selectedRecipe && (
         <Modal onClose={closeDetailsRecipe}>
-          <h1>{selectedRecipe.strMeal}</h1>
+          <Title>{selectedRecipe.strMeal}</Title>
           <img
             src={selectedRecipe.strMealThumb}
             alt={selectedRecipe.strMeal}
