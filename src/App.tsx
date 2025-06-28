@@ -11,6 +11,8 @@ import getIngredientesYMedidas from './utils/getIngredientesYMedidas'
 import SearchBar from './components/SearchBar';
 import { Group, JsxElement } from '@chakra-ui/react';
 import Title from './components/Title'
+import MiniTitle from './components/MiniTitle';
+import DashBoardLoading from './components/DashBoardLoading';
 
 type Meal = {
   strCategory: string;
@@ -121,7 +123,7 @@ const {
 
   
 
-  if (loadingCategories) return <p>Cargando categorías...</p>;
+  if (loadingCategories) return <DashBoard><DashBoardLoading/></DashBoard>;
   if (errorCategories) return <p>Error cargando categorías: {errorCategories}</p>;
 
   
@@ -140,10 +142,6 @@ const {
   };
 
 
-
-  if (loadingCategories) {
-    return <p className="p-3">Cargando...</p>;
-  }
 
   if (errorCategories && !loadingCategories) {
     return <p className="p-3 text-danger">Ha ocurrido un error: {errorCategories}</p>;
@@ -227,7 +225,7 @@ const {
           
           {mealsByDetails.length > 0 && (
   <div>
-    <h4>Ingredientes:</h4>
+    <MiniTitle>Ingredientes:</MiniTitle>
     <ul>
       {Array.from({ length: 20 }).map((_, i) => {
         const ing = mealsByDetails[0][`strIngredient${i + 1}` as keyof MealDetails];
@@ -238,7 +236,7 @@ const {
       })}
     </ul>
 
-    <h4>Instrucciones:</h4>
+    <MiniTitle>Instrucciones:</MiniTitle>
     <p>{mealsByDetails[0].strInstructions}</p>
   </div>
   
