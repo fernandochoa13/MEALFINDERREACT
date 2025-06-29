@@ -138,7 +138,9 @@ const {
 
   };
 
-  const emptyMeals: Meal[] = [];
+  const emptyMeals: Meal[] = [{strCategory: ''}];
+
+  const emptyMealItem: MealItem[] = [];
 
 
 
