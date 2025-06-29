@@ -12,8 +12,6 @@ import SearchBar from './components/SearchBar';
 import { Group, JsxElement } from '@chakra-ui/react';
 import Title from './components/Title'
 import MiniTitle from './components/MiniTitle';
-import DashBoardLoading from './components/DashBoardLoading';
-
 type Meal = {
   strCategory: string;
 };
@@ -123,7 +121,6 @@ const {
 
   
 
-  if (loadingCategories) return <DashBoard><DashBoardLoading/></DashBoard>;
   if (errorCategories) return <p>Error cargando categorías: {errorCategories}</p>;
 
   
@@ -141,6 +138,12 @@ const {
 
   };
 
+  const emptyMeals: Meal[] = [];
+
+
+
+  
+
 
 
   if (errorCategories && !loadingCategories) {
@@ -153,11 +156,13 @@ const {
     <SearchBar onSearch={setSearchQuery}></SearchBar>
     <DashBoard>
     
+      {loadingCategories ? (
+        <NavBar data={emptyMeals}></NavBar> ) : (
       
       <NavBar
         data={meals}
         onClick={(categoria) => setSelectedCategory(categoria)}
-      />
+      /> )}
       <div className="divMeals">
     {searchQuery && !loadingBySearch ? (
   mealsBySearch.length > 0 ? (
